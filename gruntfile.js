@@ -4,9 +4,9 @@ module.exports = function (grunt) {
 
   var babelConfig = [{
     expand: true,
-    cwd: 'src/',
+    cwd: 'intermediaries/',
     src: '*.js',
-    dest: 'intermediaries/.',
+    dest: 'output',
     ext: '.js'
   }]
 
@@ -22,8 +22,8 @@ module.exports = function (grunt) {
     },
     browserify: {
       main: {
-        src: 'intermediaries/source.js',
-        dest: 'output/bundle.js'
+        src: 'src/source.js',
+        dest: 'intermediaries/bundle.js'
       }
     },
     copy: {
@@ -48,5 +48,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
 
-  grunt.registerTask('default', ['clean:prepare', 'copy', 'babel', 'browserify', 'clean:cleanup']);
+  grunt.registerTask('default', ['clean:prepare', 'copy', 'browserify', 'babel', 'clean:cleanup']);
 };
