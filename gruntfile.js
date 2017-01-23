@@ -4,9 +4,9 @@ module.exports = function (grunt) {
 
   var babelConfig = [{
     expand: true,
-    cwd: '.',
+    cwd: 'src/',
     src: '*.js',
-    dest: 'intermediaries',
+    dest: 'intermediaries/.',
     ext: '.js'
   }]
 
@@ -29,7 +29,11 @@ module.exports = function (grunt) {
     copy: {
       main: {
         files: [
-          { expand: true, src: ['index.html'], dest: 'output/', filter: 'isFile' },
+          { src: ['html/index.html'], dest: 'output/index.html', filter: 'isFile' },
+          { src: ['json/pushbot.json'], dest: 'intermediaries/pushbot.json', filter: 'isFile' },
+          { src: ['lib/text.js'], dest: 'intermediaries/text.js', filter: 'isFile' },
+          { src: ['lib/json.js'], dest: 'intermediaries/json.js', filter: 'isFile' },
+          { src: ['lib/Box2D.js'], dest: 'intermediaries/Box2D.js', filter: 'isFile' },
         ]
       }
     },
