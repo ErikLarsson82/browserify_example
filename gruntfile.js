@@ -6,7 +6,7 @@ module.exports = function (grunt) {
     expand: true,
     cwd: '.',
     src: '*.js',
-    dest: 'output',
+    dest: 'intermediaries',
     ext: '.js'
   }]
 
@@ -22,7 +22,7 @@ module.exports = function (grunt) {
     },
     browserify: {
       main: {
-        src: 'source.js',
+        src: 'intermediaries/source.js',
         dest: 'output/bundle.js'
       }
     },
@@ -34,7 +34,8 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      prepare: ['output']
+      prepare: ['output'],
+      cleanup: ['intermediaries']
     }
   });
   grunt.loadNpmTasks('grunt-babel');
@@ -43,5 +44,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
 
-  grunt.registerTask('default', ['copy', 'browserify']);
+  grunt.registerTask('default', ['clean:prepare', 'copy', 'babel', 'browserify', 'clean:cleanup']);
 };
