@@ -30,6 +30,7 @@ module.exports = function (grunt) {
       main: {
         files: [
           { expand: true, src: ['index.html'], dest: 'output/', filter: 'isFile' },
+          { src: ['lib/Box2D.js'], dest: 'intermediaries/Box2D.js', filter: 'isFile' },
         ]
       }
     },
