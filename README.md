@@ -1,6 +1,19 @@
 # Transpile bug
 A repo reproducing a transpiling bug I'm trying to investigate and solve!
 
+Edit: solution!
+======
+So, I found a solution the Box2D lib, namely that it does this to Object:
+
+`Object.defineProperty = function(obj, p, cfg) {
+  if(cfg.get instanceof Function)
+    obj.__defineGetter__(p, cfg.get);
+  if(cfg.set instanceof Function)
+    obj.__defineSetter__(p, cfg.set);
+}`
+
+Removing this solves the problem. I also found a newer version of box2d as npm package [here](https://www.npmjs.com/package/box2dweb) where that part of the code is explicitly removed aswell.
+
 Context
 ======
 Basically, I want to write ES6 code (class, let, const) and transpile it using [Babel](https://babeljs.io/) to ES5 in order to run on specific devices. I also want to bundle the dependencies using [Browserify](http://browserify.org/).
