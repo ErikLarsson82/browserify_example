@@ -3,7 +3,7 @@ A repo reproducing a transpiling bug I'm trying to investigate and solve!
 
 Context
 ======
-Basically, I want to write ES6 code (class, let, const) and transpile it using (Babel)[https://babeljs.io/] to ES5 in order to run on specific devices. I also want to bundle the dependencies using (Browserify)[http://browserify.org/].
+Basically, I want to write ES6 code (class, let, const) and transpile it using [Babel](https://babeljs.io/) to ES5 in order to run on specific devices. I also want to bundle the dependencies using [Browserify](http://browserify.org/).
 In my example, I have two custom classes and one external lib. Now, the interesting thing is that the _order_ when doing require matters for the behaviour of the code.
 
 Now, there is 3 different outcomes:
